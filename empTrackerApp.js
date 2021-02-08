@@ -20,14 +20,33 @@ var connection = mysql.createConnection({
 connection.connect(function(err) {
     if (err) throw err;
     console.log("connected as id " + connection.threadId);
-    afterConnection();
+    logEmpTable();
+    logRoleTable();
+    logDepartmentTable();
   });
   
-  function afterConnection() {
+  function logEmpTable() {
     connection.query("SELECT * FROM employee", function(err, res) {
       if (err) throw err;
-      console.log(res);
+      console.table('Employee Table', res);
     //   connection.end();
     });
   }
+
+  function logRoleTable() {
+    connection.query("SELECT * FROM role", function(err, res) {
+      if (err) throw err;
+      console.table('Role Table', res);
+    //   connection.end();
+    });
+  }
+
+  function logDepartmentTable() {
+    connection.query("SELECT * FROM role", function(err, res) {
+      if (err) throw err;
+      console.table('Role Table', res);
+    //   connection.end();
+    });
+  }
+  
   
