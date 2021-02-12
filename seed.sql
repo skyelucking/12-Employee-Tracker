@@ -24,6 +24,7 @@ CREATE TABLE employee(
   last_name VARCHAR(30) NULL,
   department_id INT NULL,
   manager_id INT NULL,
+  role_id INT NULL,
   PRIMARY KEY (id)
 );
 
@@ -56,23 +57,23 @@ VALUES
  
  ;
 
-INSERT INTO employee (first_name, last_name, department_id, manager_id)
+INSERT INTO employee (first_name, last_name, department_id, manager_id, role_id)
 VALUES
  
-("David", "Wallace", 6, null), 
-("Michael", "Scott", 6, 1), 
-("Angela", "Martin", 1, 2), 
-("Kevin", "Malone", 1, 3), 
-("Oscar", "Martinez", 1, 3), 
-("Tom", "Peets", 1, 3), 
-("Kelly", "Kapoor", 3, 2), 
-("Pam", "Beesly", 3, 2),
-("Jim", "Halpert", 4, 2)
-("Dwight", "Schrute", 4, 2)
-("Darryl", "Philbin", 5, 1),
-("Meredith", "Palmer", 7, 2),
-("Creed", "Bratton", 8, 2),
-("Phyllis", "Vance", 4, 2),
-("Stanley", "Hudson", 4, 2)
+("David", "Wallace", 6, null, 8), 
+("Michael", "Scott", 6, 1, 9), 
+("Angela", "Martin", 1, 2, 1), 
+("Kevin", "Malone", 1, 3, 2), 
+("Oscar", "Martinez", 1, 3, 2), 
+("Tom", "Peets", 1, 3, 2), 
+("Kelly", "Kapoor", 3, 2, 3), 
+("Pam", "Beesly", 3, 2, 4),
+("Jim", "Halpert", 4, 2, 5)
+("Dwight", "Schrute", 4, 2, 7)
+("Darryl", "Philbin", 5, 1, 6),
+("Meredith", "Palmer", 7, 2, 10),
+("Creed", "Bratton", 8, 2, 11),
+("Phyllis", "Vance", 4, 2, 5),
+("Stanley", "Hudson", 4, 2, 5)
   ;
 
