@@ -60,16 +60,16 @@ VALUES
 INSERT INTO employee (first_name, last_name, department_id, manager_id, role_id)
 VALUES
  
-("David", "Wallace", 6, null, 8), 
+("David", "Wallace", 6, 1, 8), 
 ("Michael", "Scott", 6, 1, 9), 
 ("Angela", "Martin", 1, 2, 1), 
 ("Kevin", "Malone", 1, 3, 2), 
 ("Oscar", "Martinez", 1, 3, 2), 
 ("Tom", "Peets", 1, 3, 2), 
-("Kelly", "Kapoor", 3, 2, 3), 
+("Kelly", "Kapoor", 2, 2, 3), 
 ("Pam", "Beesly", 3, 2, 4),
-("Jim", "Halpert", 4, 2, 5)
-("Dwight", "Schrute", 4, 2, 7)
+("Jim", "Halpert", 4, 2, 5),
+("Dwight", "Schrute", 4, 2, 7),
 ("Darryl", "Philbin", 5, 1, 6),
 ("Meredith", "Palmer", 7, 2, 10),
 ("Creed", "Bratton", 8, 2, 11),
