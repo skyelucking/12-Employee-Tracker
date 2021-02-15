@@ -2,6 +2,7 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 const cTable = require("console.table");
+var fs = require('fs');
 
 // create the connection information for the sql database
 var connection = mysql.createConnection({
@@ -22,8 +23,70 @@ var connection = mysql.createConnection({
 connection.connect(function (err) {
   if (err) throw err;
   console.log("connected as id " + connection.threadId);
-  runSearch();
+  logo();
+  
 });
+
+function logo(){
+  var fs = require('fs');
+  var path = require('path');
+  var readStream = fs.createReadStream(path.join(__dirname, '../12-Employee-Tracker') + '/theOffice.txt', 'utf8');
+  let data = ''
+  readStream.on('data', function(chunk) {
+      data += chunk;
+  }).on('end', function() {
+      console.log(data);
+      runSearch();
+  });
+  };
+
+  function whatNow(){
+    
+    inquirer
+    .prompt({
+      name: "action",
+      pageSize: 8,
+      type: "list",
+      message: "What would you like to do now?",
+      choices: [
+        "Back to Menu",
+        "Exit",
+        new inquirer.Separator(),
+      ],
+    })
+    .then(function (answer) {
+      switch (answer.action) {
+        case "Back to Menu":
+          runSearch();
+          break;
+        
+          case "Exit":
+          byeDwight();
+         
+          break;
+      }
+    });
+} 
+
+function byeDwight(){
+  var fs = require('fs');
+  var path = require('path');
+  var readStream = fs.createReadStream(path.join(__dirname, '../12-Employee-Tracker') + '/byeDwight.txt', 'utf8');
+  let data = ''
+  readStream.on('data', function(chunk) {
+      data += chunk;
+  }).on('end', function() {
+      console.log(data);
+      endConn();
+  });
+  };
+
+  function endConn(){
+    connection.end();
+    };
+   
+  
+
 //Top Menu of Actions
 function runSearch() {
   inquirer
@@ -194,7 +257,7 @@ INNER JOIN employee EE
             );
 console.table("Total Budget By Department", res);
             
-            runSearch();
+        whatNow();
           }
         );
       });
@@ -903,4 +966,7 @@ function removeRole() {
   });
 }
 
+
+  
+ 
 

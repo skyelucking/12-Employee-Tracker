@@ -1,0 +1,36 @@
+    ████████╗██╗  ██╗███████╗     ██████╗ ███████╗███████╗██╗ ██████╗███████╗        
+    ╚══██╔══╝██║  ██║██╔════╝    ██╔═══██╗██╔════╝██╔════╝██║██╔════╝██╔════╝        
+       ██║   ███████║█████╗      ██║   ██║█████╗  █████╗  ██║██║     █████╗          
+       ██║   ██╔══██║██╔══╝      ██║   ██║██╔══╝  ██╔══╝  ██║██║     ██╔══╝          
+       ██║   ██║  ██║███████╗    ╚██████╔╝██║     ██║     ██║╚██████╗███████╗        
+       ╚═╝   ╚═╝  ╚═╝╚══════╝     ╚═════╝ ╚═╝     ╚═╝     ╚═╝ ╚═════╝╚══════╝        
+                     *** Employee Management System ****
+                                                                           
+                           .:+syddddhs:-/+ossoo/-`                         
+                       `ohNMMMMMMMMMMMMMMMMMMMMMMMdo-                      
+                     .yMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMd:                    
+                   `sMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMd-                  
+                  -mMMMMMMMMMMMMMMNs.:dMMMMMMMMMMMMMMMMMM+                 
+                 :NMMMMMMMMMMMMMMy.    -yNMMMMMMMMMMMMMMMMo                
+                :MMMMMMMMMMMMMMd-        `+dMMMMMMMMMMMMMMMo               
+               .NMMMMMMMMMMMMm+`            :hMMMMMMMMMMMMMM:              
+               yMMMMMMMMMMMMM:                /NMNMMMMMMMMMMm`             
+              .MMMMMMMMMMm:Mm                  :NoMNMMMMMMMMM/             
+              +MMMMMMMyMMs hh                   .sooMMMMMMMMMh             
+              oMMMMMMM:MMh ./                    ``NMhMMMMMMMm             
+              oMMMMMMo.hMM:                      `dhm++MMMMMMm             
+              :MMMMMd  `+ss.                     /.-`  hMMMMMy             
+              `dMMMM-           ```````````            .mMMMM-             
+               -NMMy -:::-:////+ooo/----:oo//:::/:::::: /MMM+              
+                +MMyo-             hsoosd.            `soMMy               
+                `NMoy             `y    +.             +:NM:               
+                 mM-o            `o-    `+`            o NM.               
+                 dM::/-``     `-//`       :/:.`   `.-:+-`NN`               
+                 hMs  `-::::::-`            `.:-:-:-`   /Mm`               
+                 sMN`                                   dMd                
+                 /MMo                                  :MMs                
+                  /hd                                  yd+`                
+                                                                           
+                                                                           
+                                                                           
+                                                                       
