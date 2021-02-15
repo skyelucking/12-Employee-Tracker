@@ -1,10 +1,11 @@
 {
-  "name": "12-Employee-Tracker",
+  "name": "12-employee-tracker",
   "version": "1.0.0",
   "description": "",
   "main": "empTrackerApp.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    
+    "start": "node empTrackerApp.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,6 @@
     "inquirer": "^7.3.3",
     "mysql": "^2.18.1",
     "require-uncached": "^2.0.0"
-  }
+  },
+  "devDependencies": {}
 }
