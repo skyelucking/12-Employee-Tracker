@@ -28,6 +28,8 @@ Build a command-line application that at a minimum allows the user to:
    <img src="./Assets/SS13.png"><br>
   <img src="./Assets/SS14.png"><br>
    <img src="./Assets/SS15.png"><br>
+   * Exit Out of Program<br>
+   <img src="./Assets/SS16.png"><br>
  <hr>
 
  <h1>Special Modules/Packages/Extensions Used</h1>
