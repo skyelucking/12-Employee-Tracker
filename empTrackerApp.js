@@ -1,4 +1,5 @@
 // Require the database, prompting, and table formatting packages
+// require('events').EventEmitter.prototype._maxListeners = 100;
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 const cTable = require("console.table");
@@ -22,11 +23,10 @@ var connection = mysql.createConnection({
 //Opens the DB connection and starts the app
 connection.connect(function (err) {
   if (err) throw err;
-  console.log("connected as id " + connection.threadId);
   logo();
   
 });
-
+//Displays Ascii Art Logo Welcome Screen
 function logo(){
   var fs = require('fs');
   var path = require('path');
@@ -39,60 +39,13 @@ function logo(){
       runSearch();
   });
   };
-
-  function whatNow(){
-    
-    inquirer
-    .prompt({
-      name: "action",
-      pageSize: 8,
-      type: "list",
-      message: "What would you like to do now?",
-      choices: [
-        "Back to Menu",
-        "Exit",
-        new inquirer.Separator(),
-      ],
-    })
-    .then(function (answer) {
-      switch (answer.action) {
-        case "Back to Menu":
-          runSearch();
-          break;
-        
-          case "Exit":
-          byeDwight();
-         
-          break;
-      }
-    });
-} 
-
-function byeDwight(){
-  var fs = require('fs');
-  var path = require('path');
-  var readStream = fs.createReadStream(path.join(__dirname, '../12-Employee-Tracker') + '/byeDwight.txt', 'utf8');
-  let data = ''
-  readStream.on('data', function(chunk) {
-      data += chunk;
-  }).on('end', function() {
-      console.log(data);
-      endConn();
-  });
-  };
-
-  function endConn(){
-    connection.end();
-    };
-   
-  
-
-//Top Menu of Actions
+     
+  //Top Menu of Actions
 function runSearch() {
   inquirer
     .prompt({
       name: "action",
-      pageSize: 8,
+      pageSize: 25,
       type: "list",
       message: "What would you like to do?",
       choices: [
@@ -102,7 +55,6 @@ function runSearch() {
         "View All Employees By Department",
         "View All Employees By Manager",
         "View Employees By Role",
-        "View List of Roles",
         "View Role Details",
         "View List of Departments",
         "----ADD----",
@@ -146,7 +98,7 @@ function runSearch() {
           viewRoles();
           break;
 
-        case "View List of Roles":
+        case "View Role Details":
           listRoles();
           break;
 
@@ -203,7 +155,7 @@ function runSearch() {
           break;
 
         case "Exit this and go outside for some fresh air":
-          connection.end();
+          byeDwight();
           break;
       }
     });
@@ -257,7 +209,8 @@ INNER JOIN employee EE
             );
 console.table("Total Budget By Department", res);
             
-        whatNow();
+        runSearch();
+        
           }
         );
       });
@@ -289,6 +242,7 @@ function viewEmps() {
       console.table("\n" + "---------------------------------------------");
 
       runSearch();
+      
     }
   );
 }
@@ -338,7 +292,7 @@ function viewEmpsByDept() {
           ],
           (err, res) => {
             if (err) throw err;
-            console.log(data.choice);
+            // console.log(data.choice);
             console.table(
               "\n" + "---------------------------------------------"
             );
@@ -349,6 +303,7 @@ function viewEmpsByDept() {
             );
 
             runSearch();
+            
           }
         );
       });
@@ -414,15 +369,17 @@ function viewEmpsByManager() {
               "\n" + "---------------------------------------------"
             );
             runSearch();
+            
           }
         );
       });
   });
 }
+
 //MinReq: View All Role Types
 function listRoles() {
   const query = `
-  SELECT title as "Role Titles"
+  SELECT title as "Role Titles", salary as "Salary"
   FROM role`;
   connection.query(query, (err, res) => {
     if (err) throw err;
@@ -430,6 +387,7 @@ function listRoles() {
     console.table(res);
 
     runSearch();
+    
   });
 }
 
@@ -475,7 +433,7 @@ function viewEmpsByRoles() {
           ],
           (err, res) => {
             if (err) throw err;
-            console.log(data.choice);
+            // console.log(data.choice);
             console.table(
               "\n" + "---------------------------------------------"
             );
@@ -486,6 +444,7 @@ function viewEmpsByRoles() {
             );
 
             runSearch();
+           
           }
         );
       });
@@ -503,6 +462,7 @@ function listDept() {
     console.table(res);
 
     runSearch();
+    
   });
 }
 //****ADD SECTION STARTS****//
@@ -531,7 +491,7 @@ function addEmp() {
         },
       ])
       .then((data) => {
-        console.log("dept_id: ", data.department_id);
+        // console.log("dept_id: ", data.department_id);
         department_id = data.department_id;
         const query = `SELECT * FROM role WHERE department_id = ${data.department_id};`;
         connection.query(query, (err, res) => {
@@ -605,6 +565,7 @@ function addEmp() {
                           console.log(res.affectedRows + " employee added!\n");
                           viewEmps();
                           runSearch();
+                         
                         });
                       });
                   });
@@ -616,6 +577,7 @@ function addEmp() {
 }
 //MinReq: Add New Deparment
 function addDept() {
+  
   inquirer
     .prompt([
       {
@@ -634,6 +596,7 @@ function addDept() {
         console.log(res.affectedRows + " department added!\n");
         listDept();
         runSearch();
+        
       });
     });
 }
@@ -675,7 +638,7 @@ function addRole() {
             },
           ])
           .then((data) => {
-            const query = "INSERT INTO role SET ?";
+            const query = "INSERT INTO role SET ? ";
             const params = {
               title: data.title,
               salary: data.salary,
@@ -686,6 +649,8 @@ function addRole() {
               console.log(res.affectedRows + " role added!\n");
               listRoles();
               runSearch();
+              
+              
             });
           });
       });
@@ -726,7 +691,7 @@ function updateRole() {
       ])
       .then((data) => {
         employee_id = data.employee_id;
-        console.log(employee_id);
+        // console.log(employee_id);
         // console.log(data.employee_id);
         const query = `SELECT * FROM role`;
         connection.query(query, (err, res) => {
@@ -748,8 +713,8 @@ function updateRole() {
             ])
             .then((data) => {
               role_id = data.role_id;
-              console.log(role_id);
-              console.log(data.role_id);
+              // console.log(role_id);
+              // console.log(data.role_id);
               console.log(
                 "role id: " + role_id + " Employee id :" + employee_id
               );
@@ -810,7 +775,7 @@ function updateManager() {
       ])
       .then((data) => {
         employee_id = data.employee_id;
-        console.log(employee_id);
+        // console.log(employee_id);
        
         const query = `SELECT id, first_name, last_name, manager_id 
         FROM employee  
@@ -837,8 +802,8 @@ function updateManager() {
             ])
             .then((data) => {
               manager_id = data.manager_id;
-              console.log(manager_id);
-              console.log(data.manager_id);
+              // console.log(manager_id);
+              // console.log(data.manager_id);
               console.log(
                 "manager id: " + manager_id + " Employee id :" + employee_id
               );
@@ -965,6 +930,20 @@ function removeRole() {
       });
   });
 }
+
+//Displays Ascii Art Logo Goodbye Screen and Closes Connection
+function byeDwight(){
+  var fs = require('fs');
+  var path = require('path');
+  var readStream = fs.createReadStream(path.join(__dirname, '../12-Employee-Tracker') + '/byeDwight.txt', 'utf8');
+  let data = ''
+  readStream.on('data', function(chunk) {
+      data += chunk;
+  }).on('end', function() {
+      console.log(data);
+      connection.end();
+  });
+  };
 
 
   
