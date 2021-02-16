@@ -32,11 +32,14 @@ Build a command-line application that at a minimum allows the user to:
    <img src="./Assets/SS16.png"><br>
  <hr>
 
- <h1>Special Modules/Packages/Extensions Used</h1>
+ <h1>Special Modules/Packages/Extensions/Tutorials Used</h1>
 * <a href="https://marketplace.visualstudio.com/items?itemName=BitBelt.converttoasciiart">Convert To ASCII Art</a><br>
+* <a href="https://youtu.be/mbTMNME6Wak">Tutorial on creating an ascii-art text file that can be read</a><br>
+* <a href="https://stackoverflow.com/a/46801928/14369431"> Using FS to read a text file so ascii art retains its form</a><br>
 * Inquirer<br>
 * MySql<br>
 * FS<br>
+
 <br>
 <hr>
 <h1>Link To Video of CLI Application</h1>
